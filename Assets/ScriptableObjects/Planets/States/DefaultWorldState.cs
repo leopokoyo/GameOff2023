@@ -3,94 +3,112 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using ScriptableObjects;
+using UnityEngine.Animations;
 
 [CreateAssetMenu(menuName = "State/WorldDefault")]
 public class DefaultWorldState : State<WorldController>
 {
     public override void ChangeState()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void HandleInput()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void Update()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    void DailyUpdate()
     {
         Consume();
         Produce();
         CalculatePrice();
     }
 
+    void DailyUpdate()
+    {
+
+    }
+
     void Consume()
     {
-        //calculate consumption based of population size
-        int steelWoolConsumption = Parent.population / Parent.basicProductConsumption;
-        int goopConsumption = Parent.population / Parent.basicProductConsumption;
-        int cheeseConsumption = Parent.population / Parent.basicProductConsumption;
-        int waterConsumption = Parent.population / Parent.luxuryProductConsumtion;
-        int dogToysConsumption = Parent.population / Parent.basicProductConsumption;
+        foreach (KeyValuePair<Goods, int> productAmount in Parent.inventory)
+        {
+            if (productAmount.Key == Goods.water)
+            {
+                int luxConsumption = Parent.population / Parent.luxuryProductConsumtion;
+                Parent.inventory[productAmount.Key] -= luxConsumption;
+            }
 
-        //change inventory based of consumption
-        Parent.inventory.Add("steelWool", -steelWoolConsumption);
-        Parent.inventory.Add("goop", -goopConsumption);
-        Parent.inventory.Add("cheese", -cheeseConsumption);
-        Parent.inventory.Add("water", -waterConsumption);
-        Parent.inventory.Add("dogToys", -dogToysConsumption);
+            else
+            {
+                int consumption = Parent.population / Parent.basicProductConsumption;
+                Parent.inventory[productAmount.Key] -= consumption;
+            }
+        }
     }
 
     void Produce()
     {
-        //calculate production based of population
-        int production = Parent.population * Parent.productionRate;
-
-        //change inventory based of production
-        Parent.inventory.Add(Parent.mainProduction, production);
+        for (int i = 0; i < Parent.mainProduction.Length; i++)
+        {
+            //calculate production based of population
+            int production = Parent.population * Parent.productionRate[i];
+            //change inventory based of production
+            Parent.inventory[Parent.mainProduction[i]] += production;
+        }
     }
 
-    void Buy(/*ship,*/string item, int amountBought)
+    void Buy(/*ship,*/Goods item, int amountBought)
     {
-        Parent.inventory.Add(item, amountBought);
+        Parent.inventory[item] += amountBought;
         //player.inventory.Add(GiveMoney());
     }
 
-    void Sell(/*ship,*/string item, int amountSold)
+    void Sell(/*ship,*/Goods item, int amountSold)
     {
-        Parent.inventory.Add(item, -amountSold);
+        Parent.inventory[item] -= amountSold;
         //player.inventory.Add(-GetMoney());
     }
 
-    void CalculatePrice(){
-        //for each price enum thing
+    void CalculatePrice()
+    {
+        int normalBasicStockpile = Parent.population / 2;
+        int normalLuxuryStockpile = Parent.population / 3;
+        float relativeStockpile;
+        float fluidPrice;
 
-        //find normal stockpile
-        //Parent.population / 2 for basic goods;
-        //Parent.population / 3 for luxury goods;
+        foreach (KeyValuePair<Goods, int> productAmount in Parent.inventory)
+        {
+            if (productAmount.Key == Goods.water)
+            {
+                relativeStockpile = productAmount.Value / normalLuxuryStockpile;
+                float priceModifier = 1 + (1 - relativeStockpile);
+                fluidPrice = Parent.luxuryStandardPrice * priceModifier;
+                Parent.prices[productAmount.Key] = (int)fluidPrice;
+            }
 
-        //check currentstockpile compared to normal stockpile
-        //relativeStockpile = currentStockpile/Stockpile;
-        
-        //calculate relative price because of stockpile or shortage
-        //priceModifier = 1 + (1 - relativeStockpile);
-        //productPrice = price * priceModifier;
+            else
+            {
+                relativeStockpile = productAmount.Value / normalBasicStockpile;
+                float priceModifier = 1 + (1 - relativeStockpile);
+                fluidPrice = Parent.basicStandardPrice * priceModifier;
+                Parent.prices[productAmount.Key] = (int)fluidPrice;
+            }
+
+
+        }
     }
 
     int GetMoney(int amount, int price)
     {
         float fluidMoney = amount * price;
-        fluidMoney *= (1 + Parent.taxRate);
+        fluidMoney *= 1 + Parent.taxRate;
         int money = (int)fluidMoney;
         return money;
     }
@@ -98,7 +116,7 @@ public class DefaultWorldState : State<WorldController>
     int GiveMoney(int amount, int price)
     {
         float fluidMoney = amount * price;
-        fluidMoney *= (1 - Parent.taxRate);
+        fluidMoney *= 1 - Parent.taxRate;
         int money = (int)fluidMoney;
         return money;
     }
