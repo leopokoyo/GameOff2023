@@ -14,5 +14,6 @@ namespace ScriptableObjects
         public abstract void ExitState();
         public abstract void Update();
         public abstract void HandleInput();
+        public abstract void NewDay();
     }
 }

@@ -22,6 +22,11 @@ public class DefaultWorldState : State<WorldController>
         throw new System.NotImplementedException();
     }
 
+    public override void NewDay()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void Update()
     {
         throw new System.NotImplementedException();

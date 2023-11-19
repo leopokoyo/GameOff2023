@@ -9,10 +9,11 @@ namespace ScriptableObjects
     {
         
         [Header("Different States")]
-        [SerializeField] private List<State<T>> states;
+        [SerializeField]
+        internal List<State<T>> states;
 
 
-        private State<T> _activeState;
+        internal State<T> _activeState;
         private readonly Dictionary<Type, State<T>> _stateByType = new();
 
         protected void Awake()
@@ -20,7 +21,7 @@ namespace ScriptableObjects
             states.ForEach(state => _stateByType.Add(state.GetType(), state));
         }
 
-        public void SetState(Type newStateType)
+        protected void SetState(Type newStateType)
         {
             if (_activeState != null)
             {
