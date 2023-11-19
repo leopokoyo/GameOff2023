@@ -12,6 +12,8 @@ public class WorldController : StateRunner<WorldController>
     public float luxuryStandardPrice, basicStandardPrice;
     public int[] productionRate;
 
+    [SerializeField] GameObject infoScreen;
+
     public float taxRate;
 
     public Goods[] mainProduction;
@@ -33,5 +35,16 @@ public class WorldController : StateRunner<WorldController>
         prices.Add(Goods.water, 10);
 
         SetState(typeof(DefaultWorldState));
+
+        infoScreen.SetActive(false);
+    }
+
+
+    void OnMouseOver(){
+        infoScreen.SetActive(true);
+    }
+
+    void OnMouseExit(){
+        infoScreen.SetActive(false);
     }
 }

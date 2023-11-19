@@ -8,6 +8,7 @@ using UnityEngine.Animations;
 [CreateAssetMenu(menuName = "State/WorldDefault")]
 public class DefaultWorldState : State<WorldController>
 {
+    bool dailyTick = true;
     public override void ChangeState()
     {
 
@@ -25,9 +26,10 @@ public class DefaultWorldState : State<WorldController>
 
     public override void Update()
     {
-        Consume();
-        Produce();
-        CalculatePrice();
+        
+            Consume();
+            Produce();
+            CalculatePrice();
     }
 
     void DailyUpdate()
@@ -37,18 +39,19 @@ public class DefaultWorldState : State<WorldController>
 
     void Consume()
     {
-        foreach (KeyValuePair<Goods, int> productAmount in Parent.inventory)
-        {
-            if (productAmount.Key == Goods.water)
+        List<Goods> keys = new List<Goods>(Parent.inventory.Keys);
+        foreach (Goods productAmount in keys){
+            Debug.Log(productAmount);
+            if (productAmount == Goods.water)
             {
                 int luxConsumption = Parent.population / Parent.luxuryProductConsumtion;
-                Parent.inventory[productAmount.Key] -= luxConsumption;
+                Parent.inventory[productAmount] -= luxConsumption;
             }
 
             else
             {
                 int consumption = Parent.population / Parent.basicProductConsumption;
-                Parent.inventory[productAmount.Key] -= consumption;
+                Parent.inventory[productAmount] -= consumption;
             }
         }
     }
@@ -61,6 +64,7 @@ public class DefaultWorldState : State<WorldController>
             int production = Parent.population * Parent.productionRate[i];
             //change inventory based of production
             Parent.inventory[Parent.mainProduction[i]] += production;
+
         }
     }
 
@@ -83,25 +87,24 @@ public class DefaultWorldState : State<WorldController>
         float relativeStockpile;
         float fluidPrice;
 
-        foreach (KeyValuePair<Goods, int> productAmount in Parent.inventory)
+        List<Goods> keys = new List<Goods>(Parent.inventory.Keys);
+        foreach (Goods productAmount in keys)
         {
-            if (productAmount.Key == Goods.water)
+            if (productAmount == Goods.water)
             {
-                relativeStockpile = productAmount.Value / normalLuxuryStockpile;
+                relativeStockpile = Parent.inventory[productAmount] / normalLuxuryStockpile;
                 float priceModifier = 1 + (1 - relativeStockpile);
                 fluidPrice = Parent.luxuryStandardPrice * priceModifier;
-                Parent.prices[productAmount.Key] = (int)fluidPrice;
+                Parent.prices[productAmount] = (int)fluidPrice;
             }
 
             else
             {
-                relativeStockpile = productAmount.Value / normalBasicStockpile;
+                relativeStockpile = Parent.inventory[productAmount] / normalBasicStockpile;
                 float priceModifier = 1 + (1 - relativeStockpile);
                 fluidPrice = Parent.basicStandardPrice * priceModifier;
-                Parent.prices[productAmount.Key] = (int)fluidPrice;
+                Parent.prices[productAmount] = (int)fluidPrice;
             }
-
-
         }
     }
 
