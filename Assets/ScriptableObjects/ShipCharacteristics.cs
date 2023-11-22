@@ -18,6 +18,7 @@ public class ShipCharacteristics : ScriptableObject
     public float level;
     public float maximumFuel;
     public float currentFuel;
-    
-    
+    public bool hasGoal;
+
+
 }

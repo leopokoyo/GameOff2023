@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 namespace ScriptableObjects
 {
@@ -21,7 +20,7 @@ namespace ScriptableObjects
             states.ForEach(state => _stateByType.Add(state.GetType(), state));
         }
 
-        protected void SetState(Type newStateType)
+        public void SetState(Type newStateType)
         {
             if (_activeState != null)
             {

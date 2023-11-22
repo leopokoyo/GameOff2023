@@ -11,31 +11,20 @@ public class DefaultShipState : State<ShipController>
 
     public override void ChangeState()
     {
-        if (Vector3.Distance(Parent.characteristics.position, Parent.characteristics.nextDestination) < 2)
+        if (!Parent.characteristics.hasGoal) return;
+        if (Parent.characteristics.nextDestination != Parent.characteristics.position)
         {
-            
+            Parent.SetState(typeof(MoveShipSate));
         }
     }
 
     public override void ExitState()
     {
+        Debug.Log("MOVE FROM IDLE");
     }
 
     public override void Update()
     {
-
-        if (Parent.characteristics.nextDestination != Parent.characteristics.position)
-        {
-            _current += Time.deltaTime;
-            Parent.characteristics.position = Vector3.Lerp(Parent.characteristics.position,
-                Parent.characteristics.nextDestination,
-                 (Time.deltaTime * Parent.characteristics.speedCurve.Evaluate(_current))/ Parent.characteristics.speed);
-            Parent.transform.position = Parent.characteristics.position;
-        }
-        else
-        {
-            _current = 0;
-        }
         
     }
 

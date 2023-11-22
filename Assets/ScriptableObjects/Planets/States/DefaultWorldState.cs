@@ -42,7 +42,7 @@ public class DefaultWorldState : State<WorldController>
     void Consume()
     {
         //calculate consumption based of population size
-        int steelWoolConsumption = Parent.population / Parent.basicProductConsumption;
+        var steelWoolConsumption = Parent.population / Parent.basicProductConsumption;
         int goopConsumption = Parent.population / Parent.basicProductConsumption;
         int cheeseConsumption = Parent.population / Parent.basicProductConsumption;
         int waterConsumption = Parent.population / Parent.luxuryProductConsumtion;
