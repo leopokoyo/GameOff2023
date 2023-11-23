@@ -32,6 +32,11 @@ public class DefaultWorldState : State<WorldController>
             CalculatePrice();
     }
 
+    public override void NewDay()
+    {
+        throw new System.NotImplementedException();
+    }
+
     void DailyUpdate()
     {
 
