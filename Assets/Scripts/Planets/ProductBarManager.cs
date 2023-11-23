@@ -20,12 +20,12 @@ public class ProductBarManager : MonoBehaviour
     }
     void Update()
     {
-        foreach (KeyValuePair<Goods, int> productAmount in planet.inventory)
+        foreach (KeyValuePair<Goods, int> productAmount in planet.planetData.inventory)
         {
             if (productAmount.Key == product)
             {
-                price.text = "Price: " + planet.prices[productAmount.Key];
-                stock.text = "Stockpile: " + planet.inventory[productAmount.Key];
+                price.text = "Price: " + planet.planetData.prices[productAmount.Key];
+                stock.text = "Stockpile: " + planet.planetData.inventory[productAmount.Key];
             }
         }
     }
