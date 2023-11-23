@@ -9,6 +9,8 @@ using UnityEngine.Animations;
 public class DefaultWorldState : State<WorldController>
 {
     bool dailyTick = true;
+
+
     public override void ChangeState()
     {
 
@@ -26,10 +28,10 @@ public class DefaultWorldState : State<WorldController>
 
     public override void Update()
     {
-        
-            Consume();
-            Produce();
-            CalculatePrice();
+
+        Consume();
+        Produce();
+        CalculatePrice();
     }
 
     public override void NewDay()
@@ -45,7 +47,8 @@ public class DefaultWorldState : State<WorldController>
     void Consume()
     {
         List<Goods> keys = new List<Goods>(Parent.planetData.inventory.Keys);
-        foreach (Goods productAmount in keys){
+        foreach (Goods productAmount in keys)
+        {
             if (productAmount == Goods.water)
             {
                 int luxConsumption = Parent.planetData.population / Parent.planetData.luxuryProductConsumtion;
