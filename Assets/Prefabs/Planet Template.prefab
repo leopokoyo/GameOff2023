@@ -563,7 +563,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1042293106824549209}
   m_Father: {fileID: 1765208082019387048}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1724836852915718932
@@ -632,7 +633,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   states:
   - {fileID: 11400000, guid: 15367eeaf3ef5bd6d995b8be947a9c37, type: 2}
-  planetData: {fileID: 0}
+  population: 500
+  basicProductConsumption: 20
+  luxuryProductConsumtion: 100
+  luxuryStandardPrice: 10
+  basicStandardPrice: 3
+  productionRate: 05000000
+  infoScreen: {fileID: 3342513819478109528}
+  taxRate: 0.1
+  mainProduction: 00000000
 --- !u!58 &6614376561400012790
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -834,11 +843,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1812015808453912543}
-  m_Father: {fileID: 1765208082019387048}
+  m_Father: {fileID: 4101286787367742569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.77}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1187, y: 329}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5310313337346902235
@@ -2290,7 +2299,6 @@ Transform:
   m_LocalScale: {x: 1.6243193, y: 1.6243193, z: 1.6243193}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1042293106824549209}
   - {fileID: 4101286787367742569}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

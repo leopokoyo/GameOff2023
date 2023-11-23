@@ -3,23 +3,35 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using ScriptableObjects;
+using UnityEngine.Animations;
 
 [CreateAssetMenu(menuName = "State/WorldDefault")]
 public class DefaultWorldState : State<WorldController>
 {
+    bool dailyTick = true;
+
+
     public override void ChangeState()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+
     }
 
     public override void HandleInput()
     {
-        throw new System.NotImplementedException();
+
+    }
+
+    public override void Update()
+    {
+
+        Consume();
+        Produce();
+        CalculatePrice();
     }
 
     public override void NewDay()
@@ -27,75 +39,85 @@ public class DefaultWorldState : State<WorldController>
         throw new System.NotImplementedException();
     }
 
-    public override void Update()
-    {
-        throw new System.NotImplementedException();
-    }
-
     void DailyUpdate()
     {
-        Consume();
-        Produce();
-        CalculatePrice();
+
     }
 
     void Consume()
     {
-        //calculate consumption based of population size
-        var steelWoolConsumption = Parent.population / Parent.basicProductConsumption;
-        int goopConsumption = Parent.population / Parent.basicProductConsumption;
-        int cheeseConsumption = Parent.population / Parent.basicProductConsumption;
-        int waterConsumption = Parent.population / Parent.luxuryProductConsumtion;
-        int dogToysConsumption = Parent.population / Parent.basicProductConsumption;
+        List<Goods> keys = new List<Goods>(Parent.planetData.inventory.Keys);
+        foreach (Goods productAmount in keys)
+        {
+            if (productAmount == Goods.water)
+            {
+                int luxConsumption = Parent.planetData.population / Parent.planetData.luxuryProductConsumtion;
+                Parent.planetData.inventory[productAmount] -= luxConsumption;
+            }
 
-        //change inventory based of consumption
-        Parent.inventory.Add("steelWool", -steelWoolConsumption);
-        Parent.inventory.Add("goop", -goopConsumption);
-        Parent.inventory.Add("cheese", -cheeseConsumption);
-        Parent.inventory.Add("water", -waterConsumption);
-        Parent.inventory.Add("dogToys", -dogToysConsumption);
+            else
+            {
+                int consumption = Parent.planetData.population / Parent.planetData.basicProductConsumption;
+                Parent.planetData.inventory[productAmount] -= consumption;
+            }
+        }
     }
 
     void Produce()
     {
-        //calculate production based of population
-        int production = Parent.population * Parent.productionRate;
-
-        //change inventory based of production
-        Parent.inventory.Add(Parent.mainProduction, production);
+        for (int i = 0; i < Parent.planetData.mainProduction.Length; i++)
+        {
+            //calculate production based of population
+            int production = Parent.planetData.population * Parent.planetData.productionRate[i];
+            //change inventory based of production
+            Parent.planetData.inventory[Parent.planetData.mainProduction[i]] += production;
+        }
     }
 
-    void Buy(/*ship,*/string item, int amountBought)
+    void Buy(/*ship,*/Goods item, int amountBought)
     {
-        Parent.inventory.Add(item, amountBought);
+        Parent.planetData.inventory[item] += amountBought;
         //player.inventory.Add(GiveMoney());
     }
 
-    void Sell(/*ship,*/string item, int amountSold)
+    void Sell(/*ship,*/Goods item, int amountSold)
     {
-        Parent.inventory.Add(item, -amountSold);
+        Parent.planetData.inventory[item] -= amountSold;
         //player.inventory.Add(-GetMoney());
     }
 
-    void CalculatePrice(){
-        //for each price enum thing
+    void CalculatePrice()
+    {
+        int normalBasicStockpile = Parent.planetData.population / 2;
+        int normalLuxuryStockpile = Parent.planetData.population / 3;
+        float relativeStockpile;
+        float fluidPrice;
 
-        //find normal stockpile
-        //Parent.population / 2 for basic goods;
-        //Parent.population / 3 for luxury goods;
+        List<Goods> keys = new List<Goods>(Parent.planetData.inventory.Keys);
+        foreach (Goods productAmount in keys)
+        {
+            if (productAmount == Goods.water)
+            {
+                relativeStockpile = Parent.planetData.inventory[productAmount] / normalLuxuryStockpile;
+                float priceModifier = 1 + (1 - relativeStockpile);
+                fluidPrice = Parent.planetData.luxuryStandardPrice * priceModifier;
+                Parent.planetData.prices[productAmount] = (int)fluidPrice;
+            }
 
-        //check currentstockpile compared to normal stockpile
-        //relativeStockpile = currentStockpile/Stockpile;
-        
-        //calculate relative price because of stockpile or shortage
-        //priceModifier = 1 + (1 - relativeStockpile);
-        //productPrice = price * priceModifier;
+            else
+            {
+                relativeStockpile = Parent.planetData.inventory[productAmount] / normalBasicStockpile;
+                float priceModifier = 1 + (1 - relativeStockpile);
+                fluidPrice = Parent.planetData.basicStandardPrice * priceModifier;
+                Parent.planetData.prices[productAmount] = (int)fluidPrice;
+            }
+        }
     }
 
     int GetMoney(int amount, int price)
     {
         float fluidMoney = amount * price;
-        fluidMoney *= (1 + Parent.taxRate);
+        fluidMoney *= 1 + Parent.planetData.taxRate;
         int money = (int)fluidMoney;
         return money;
     }
@@ -103,7 +125,7 @@ public class DefaultWorldState : State<WorldController>
     int GiveMoney(int amount, int price)
     {
         float fluidMoney = amount * price;
-        fluidMoney *= (1 - Parent.taxRate);
+        fluidMoney *= 1 - Parent.planetData.taxRate;
         int money = (int)fluidMoney;
         return money;
     }

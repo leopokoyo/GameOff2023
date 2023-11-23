@@ -5,42 +5,21 @@ using UnityEngine;
 
 public class WorldController : StateRunner<WorldController>
 {
-    public int population;
+    
+    public PlanetData planetData;
 
-    public int basicProductConsumption;
-    public int luxuryProductConsumtion;
-    public int productionRate;
+    void Start(){
 
-    public float taxRate;
+        SetState(typeof(DefaultWorldState));
 
-    public string mainProduction;
-
-    public enum Product
-    {
-        //cat planet good
-        steelWool,
-        //goop planet good
-        goop,
-        //Earth planet good
-        cheese,
-        water,
-        //dog planet good
-        dogToys,
+        //infoScreen.SetActive(false);
     }
 
-    public enum Price
-    {
-        //cat planet good
-        steelWoolPrice,
-        //goop planet good
-        goopPrice,
-        //Earth planet good
-        cheesePrice,
-        waterPrice,
-        //dog planet good
-        dogToysPrice,
-
+    void OnMouseOver(){
+        //infoScreen.SetActive(true);
     }
 
-    public Dictionary<string, int> inventory = new Dictionary<string, int>();
+    void OnMouseExit(){
+        //infoScreen.SetActive(false);
+    }
 }
