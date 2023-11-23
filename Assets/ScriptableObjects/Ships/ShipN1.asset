@@ -36,8 +36,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  nextDestination: {x: 0, y: 0, z: 0}
-  position: {x: -0.023286106, y: -0.011944043, z: 0}
+  nextDestination: {x: 10, y: 10, z: 10}
+  position: {x: -12.7, y: 0.4, z: 2}
   speed: 2
   rotationSpeed: 1
   health: 1
@@ -45,3 +45,4 @@ MonoBehaviour:
   level: 1
   maximumFuel: 1
   currentFuel: 1
+  hasGoal: 0
