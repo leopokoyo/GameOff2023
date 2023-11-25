@@ -22,8 +22,6 @@ public class DayCycleManager : MonoBehaviour
 
     private void NewDay()
     {
-        
-        Debug.Log("NEW DAY HAS BEEN INVOKED");
         MainEventBus.NextDay?.Invoke(this, 2);
     }
 }
