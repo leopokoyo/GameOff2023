@@ -8,9 +8,9 @@ public class ShipCharacteristics : ScriptableObject
 {
 
     public AnimationCurve speedCurve;
-    public Queue<ICommand> commandsQueue;
     public Vector3 nextDestination;
-    public Vector3 position;
+    public Vector3 goalDestination;
+    public Vector3 homeDestination;
     public float speed;
     public float rotationSpeed;
     public float health;
@@ -19,6 +19,8 @@ public class ShipCharacteristics : ScriptableObject
     public float maximumFuel;
     public float currentFuel;
     public bool hasGoal;
+    public bool isReturnTrip;
+    
 
 
 }
