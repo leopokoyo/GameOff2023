@@ -22,4 +22,19 @@ public class WorldController : StateRunner<WorldController>
     void OnMouseExit(){
         //infoScreen.SetActive(false);
     }
+
+    private void OnEnable()
+    {
+        MainEventBus.NextDay += OnNewDay;
+    }
+
+   private void OnDisable()
+    {
+        MainEventBus.NextDay -= OnNewDay;
+    }
+
+  private void OnNewDay(object sender, int dayIndex)
+    {
+        _activeState.NewDay();
+    }
 }
