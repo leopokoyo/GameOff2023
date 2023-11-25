@@ -9,8 +9,6 @@ using UnityEngine.Animations;
 public class DefaultWorldState : State<WorldController>
 {
     bool dailyTick = true;
-    
-
 
     public override void ChangeState()
     {
