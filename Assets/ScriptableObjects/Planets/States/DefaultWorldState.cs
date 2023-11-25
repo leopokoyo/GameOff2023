@@ -9,12 +9,9 @@ using UnityEngine.Animations;
 public class DefaultWorldState : State<WorldController>
 {
     bool dailyTick = true;
-<<<<<<< Updated upstream
-=======
     
 
 
->>>>>>> Stashed changes
     public override void ChangeState()
     {
 
@@ -34,23 +31,12 @@ public class DefaultWorldState : State<WorldController>
 
     public override void NewDay()
     {
-<<<<<<< Updated upstream
-        
-            Consume();
-            Produce();
-            CalculatePrice();
-    }
-
-    void DailyUpdate()
-    {
-=======
         //_activeState.NewDay();
         Debug.Log("NewDay");
 
         Consume();
         Produce();
         CalculatePrice();
->>>>>>> Stashed changes
 
         Debug.Log(Parent + " " + Parent.planetData.inventory[Goods.water]);
     }
