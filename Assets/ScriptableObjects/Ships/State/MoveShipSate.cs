@@ -3,35 +3,46 @@ using System.Collections.Generic;
 using ScriptableObjects;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "State/Ship/MoveShip")]
-public class MoveShipSate : State<ShipController>
+public abstract class MoveShipSate : State<ShipController>
 {
+    private float _current;
+    public void HandleCommands()
+    {
+        
+    }
     public override void ChangeState()
     {
-        if (Vector3.Distance(Parent.transform.position,Parent.NextDestination) > 0.2) return;
-        
-        // If the ship is returning then it goes to IDLE otherwise it goes to DOCKING
-        Parent.SetState(!Parent.IsReturnTrip ? typeof(DockingShipState) : typeof(DefaultShipState));
+        throw new System.NotImplementedException();
     }
 
     public override void ExitState()
     {
-        Debug.Log("EXITING MOVING STATE");
+        throw new System.NotImplementedException();
     }
 
     public override void Update()
     {
-
-        Parent.transform.position = Vector3.MoveTowards(Parent.transform.position, Parent.NextDestination,Parent.characteristics.speed * Time.deltaTime);
+        if (Parent.characteristics.nextDestination != Parent.characteristics.position)
+        {
+            _current += Time.deltaTime;
+            Parent.characteristics.position = Vector3.Lerp(Parent.characteristics.position,
+                Parent.characteristics.nextDestination,
+                 (Time.deltaTime * Parent.characteristics.speedCurve.Evaluate(_current))/ Parent.characteristics.speed);
+            Parent.transform.position = Parent.characteristics.position;
+        }
+        else
+        {
+            _current = 0;
+        }
     }
 
     public override void HandleInput()
     {
-        
+        throw new System.NotImplementedException();
     }
 
     public override void NewDay()
     {
-        
+        throw new System.NotImplementedException();
     }
 }

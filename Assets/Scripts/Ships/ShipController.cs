@@ -8,22 +8,15 @@ using UnityEngine;
 public class ShipController : StateRunner<ShipController>
 {
     [SerializeField] internal ShipCharacteristics characteristics;
-    private Animator _animator;
-
-    internal Vector3 NextDestination;
-    internal Vector3 GoalDestination;
-
-    internal bool HasGoal;
-    internal bool IsReturnTrip;
-    internal bool IsFlipped;
+    
 
     private void Start()
     {
-        ChangePositionTest();
-        _animator = GetComponent<Animator>();
+        Debug.Log(transform.position);
+        characteristics.position = transform.position;
+        Debug.Log(characteristics.position);
         SetState(typeof(DefaultShipState));
         MainEventBus.NextDay += OnNewDay;
-        
     }
 
     private void OnEnable()
@@ -39,24 +32,8 @@ public class ShipController : StateRunner<ShipController>
     private void OnNewDay(object sender, int dayIndex)
     {
         _activeState.NewDay();
+        Debug.Log("NewDay");
     }
 
 
-    public void Flip()
-    {
-        if (_animator.GetBool("isActive"))
-        {
-            _animator.SetBool("isActive", false);
-        } else
-        {
-            _animator.SetBool("isActive", false);
-        }
-        
-    }
-
-    private void ChangePositionTest()
-    {
-        HasGoal = true;
-        GoalDestination = new Vector3(20, 10, 0);
-    }
 }

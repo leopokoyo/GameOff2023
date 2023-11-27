@@ -7,8 +7,15 @@ using UnityEngine;
 public class DefaultShipState : State<ShipController>
 {
 
+    private float _current;
+
     public override void ChangeState()
     {
+        if (!Parent.characteristics.hasGoal) return;
+        if (Parent.characteristics.nextDestination != Parent.characteristics.position)
+        {
+            Parent.SetState(typeof(MoveShipSate));
+        }
     }
 
     public override void ExitState()
@@ -23,26 +30,11 @@ public class DefaultShipState : State<ShipController>
 
     public override void HandleInput()
     {
-        
     }
 
     public override void NewDay()
     {
-        if (!Parent.HasGoal) return;
-
-        if (Vector3.Distance(Parent.transform.position, Parent.characteristics.homeDestination) < 0.2)
-        {
-            // It sets the next destination as the goal destination
-            Parent.NextDestination = Parent.GoalDestination;
-
-            // it sets the ship as a regular NON-Return Trip
-            Parent.IsReturnTrip = false;
-            if (Parent.IsFlipped)
-            {
-                Parent.Flip();
-            }
-        }
-        Parent.SetState(typeof(MoveShipSate));
+        
     }
     
 }
