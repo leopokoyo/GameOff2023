@@ -10,5 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d258a052135dfac9eabcec4de625c35e, type: 3}
+<<<<<<<< HEAD:Assets/ScriptableObjects/Planets/States/CatState.asset
   m_Name: CatState
+========
+  m_Name: Earth State
+>>>>>>>> e498d648b4edb88e336efe8bbeabb28f6bafa9ba:Assets/ScriptableObjects/Planets/States/Earth State.asset
   m_EditorClassIdentifier: 
