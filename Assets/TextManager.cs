@@ -17,19 +17,11 @@ public class TextManager : MonoBehaviour
 
     void Start()
     {
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         planets = GetComponentsInChildren<WorldController>();
         
-
-<<<<<<< Updated upstream
+        
 
         var j = 0;
-=======
-        int j = 0;
->>>>>>> Stashed changes
 
         foreach (var planet in planets)
         {
