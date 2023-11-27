@@ -13,6 +13,10 @@ public class PlanetData : ScriptableObject
     public int[] productionRate;
     public float taxRate;
     public Goods[] mainProduction;
+<<<<<<< Updated upstream
+=======
+    
+>>>>>>> Stashed changes
     public Dictionary<Goods, int> inventory = new Dictionary<Goods, int>()
     {
         {Goods.steelWool, 0},
