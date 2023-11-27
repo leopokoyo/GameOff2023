@@ -6,7 +6,7 @@ using TMPro;
 
 public class TextManager : MonoBehaviour
 {
-    PlanetData[] planets;
+    WorldController[] planets;
     public TextMeshProUGUI standardTextBox;
     TextMeshProUGUI[] textBox;
     
@@ -19,25 +19,11 @@ public class TextManager : MonoBehaviour
     void Start()
     {
 
-        planets = GetComponentsInChildren<PlanetData>();
-
-        foreach (PlanetData planet in planets)
-        {
-            List<Goods> keys = new List<Goods>(planet.inventory.Keys);
-            foreach (Goods item in keys)
-            {
-                {
-                    TextMeshProUGUI textBox = Instantiate(standardTextBox, planet.planetLocation, transform.rotation);
-                    textBox.text = item.ToString() + " Stockpile: " + planet.inventory[item] + " Price: " + planet.prices[item];
-
         planets = GetComponentsInChildren<WorldController>();
-        textBoxes = new TextMeshProUGUI[planets.Length][];
-        
 
+        var j = 0;
 
-        int j = 0;
-
-        foreach (WorldController planet in planets)
+        foreach (var planet in planets)
         {
             int i = 0;
             
