@@ -22,9 +22,9 @@ public class TextManager : MonoBehaviour
         
 
 
-        int j = 0;
+        var j = 0;
 
-        foreach (WorldController planet in planets)
+        foreach (var planet in planets)
         {
             int i = 0;
             
