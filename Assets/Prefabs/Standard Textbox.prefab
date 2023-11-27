@@ -1,6 +1,10 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8759223084621921880
+<<<<<<<< HEAD:Assets/Prefabs/Standard Textbox.prefab
+--- !u!1 &5342766368060666066
+========
+--- !u!1 &5901037089828301083
+>>>>>>>> e498d648b4edb88e336efe8bbeabb28f6bafa9ba:Assets/Prefabs/TextBox.prefab
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +12,83 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4556018466816032551}
-  - component: {fileID: 2389442381917258732}
-  - component: {fileID: 3454417113766860174}
+<<<<<<<< HEAD:Assets/Prefabs/Standard Textbox.prefab
+  - component: {fileID: 4911761733868649356}
+  - component: {fileID: 1752109001227067490}
+  - component: {fileID: 1581833457943187599}
   m_Layer: 5
-  m_Name: Product Text
+  m_Name: Standard Textbox
+========
+  - component: {fileID: 1408225904018962738}
+  - component: {fileID: 5769902073083208309}
+  - component: {fileID: 3820588136623775505}
+  m_Layer: 5
+  m_Name: TextBox
+>>>>>>>> e498d648b4edb88e336efe8bbeabb28f6bafa9ba:Assets/Prefabs/TextBox.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &4556018466816032551
+<<<<<<<< HEAD:Assets/Prefabs/Standard Textbox.prefab
+--- !u!224 &4911761733868649356
+========
+--- !u!224 &1408225904018962738
+>>>>>>>> e498d648b4edb88e336efe8bbeabb28f6bafa9ba:Assets/Prefabs/TextBox.prefab
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8759223084621921880}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<<< HEAD:Assets/Prefabs/Standard Textbox.prefab
+  m_GameObject: {fileID: 5342766368060666066}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalScale: {x: 0.031152649, y: 0.031152649, z: 0.031152649}
+========
+  m_GameObject: {fileID: 5901037089828301083}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+>>>>>>>> e498d648b4edb88e336efe8bbeabb28f6bafa9ba:Assets/Prefabs/TextBox.prefab
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 11, y: 0}
-  m_SizeDelta: {x: -482, y: -139}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &2389442381917258732
+<<<<<<<< HEAD:Assets/Prefabs/Standard Textbox.prefab
+--- !u!222 &1752109001227067490
+========
+--- !u!222 &5769902073083208309
+>>>>>>>> e498d648b4edb88e336efe8bbeabb28f6bafa9ba:Assets/Prefabs/TextBox.prefab
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8759223084621921880}
+<<<<<<<< HEAD:Assets/Prefabs/Standard Textbox.prefab
+  m_GameObject: {fileID: 5342766368060666066}
   m_CullTransparentMesh: 1
---- !u!114 &3454417113766860174
+--- !u!114 &1581833457943187599
+========
+  m_GameObject: {fileID: 5901037089828301083}
+  m_CullTransparentMesh: 1
+--- !u!114 &3820588136623775505
+>>>>>>>> e498d648b4edb88e336efe8bbeabb28f6bafa9ba:Assets/Prefabs/TextBox.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8759223084621921880}
+<<<<<<<< HEAD:Assets/Prefabs/Standard Textbox.prefab
+  m_GameObject: {fileID: 5342766368060666066}
+========
+  m_GameObject: {fileID: 5901037089828301083}
+>>>>>>>> e498d648b4edb88e336efe8bbeabb28f6bafa9ba:Assets/Prefabs/TextBox.prefab
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -74,8 +111,12 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190316
-  m_fontColor: {r: 0.9245283, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+<<<<<<<< HEAD:Assets/Prefabs/Standard Textbox.prefab
+  m_fontColor: {r: 0.8584906, g: 0, b: 0, a: 1}
+========
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+>>>>>>>> e498d648b4edb88e336efe8bbeabb28f6bafa9ba:Assets/Prefabs/TextBox.prefab
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -92,7 +133,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -128,7 +169,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -77.375, y: -56.272736, z: -85.81598, w: -57.679573}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

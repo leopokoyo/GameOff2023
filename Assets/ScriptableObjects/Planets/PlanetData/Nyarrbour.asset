@@ -10,28 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4c12676e2cc35639a55efa88c9fb9a5, type: 3}
-  m_Name: Earth
+  m_Name: Nyarrbour
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-  population: 0
-  basicProductConsumption: 0
-  luxuryProductConsumtion: 0
-  luxuryStandardPrice: 0
-  basicStandardPrice: 0
-  productionRate: 
-  taxRate: 0
-  mainProduction: 
-=======
-  population: 500
+  population: 300
   basicProductConsumption: 20
-  luxuryProductConsumtion: 100
-  luxuryStandardPrice: 10
+  luxuryProductConsumtion: 150
+  luxuryStandardPrice: 20
   basicStandardPrice: 3
-  productionRate: 0300000003000000
+  productionRate: 05000000
   taxRate: 0.1
-  mainProduction: 0300000004000000
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> e498d648b4edb88e336efe8bbeabb28f6bafa9ba
+  mainProduction: 00000000
   planetLocation: {x: 0, y: 0, z: 0}

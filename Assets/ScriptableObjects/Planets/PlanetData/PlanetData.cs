@@ -29,7 +29,6 @@ public class PlanetData : ScriptableObject
         {Goods.cheese, 3},
         {Goods.water, 10}
     };
+    
     public Vector3 planetLocation;
-
-
 }
