@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{c52b2faf-68a5-431f-a4e0-293026ad7141}">
+	<object class="AudioFile" id="{0a5aecfe-31e5-4c10-8425-5e3efb2c65bd}">
 		<property name="assetPath">
-			<value>Music/Spacetrade_Ambient.ogg</value>
+			<value>Music/GameOff_Ambient.ogg</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
