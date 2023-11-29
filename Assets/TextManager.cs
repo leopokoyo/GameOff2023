@@ -40,8 +40,8 @@ public class TextManager : MonoBehaviour
 
 
                 Vector3 startLocationText = Camera.main.WorldToScreenPoint(planet.transform.position);
-                startLocationText.x += 50;
-                startLocationText.y += System.Enum.GetValues(typeof(Goods)).Length * 12.5f - i * 25;
+                startLocationText.x += 150;
+                startLocationText.y += System.Enum.GetValues(typeof(Goods)).Length * 37.5f - (i * 75 + 10);
 
                 textBoxes[j][i].transform.position = startLocationText;
 
