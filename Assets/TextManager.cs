@@ -37,6 +37,8 @@ public class TextManager : MonoBehaviour
                 textBoxes[j][i] = Instantiate(standardTextBox, planet.transform.position, transform.rotation);
                 textBoxes[j][i].text = item.ToString() + "\nStockpile: " + planet.planetData.inventory[item] + "\nPrice: " + planet.planetData.prices[item];
                 textBoxes[j][i].transform.SetParent(canvas.transform, true);
+
+
                 Vector3 startLocationText = Camera.main.WorldToScreenPoint(planet.transform.position);
                 startLocationText.x += 150;
                 startLocationText.y += System.Enum.GetValues(typeof(Goods)).Length * 37.5f - (i * 75 + 10);
