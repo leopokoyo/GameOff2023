@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{8713cfe0-a55f-4f0f-8b9e-2acb868403b7}">
+		<property name="assetPath">
+			<value>SoundEffects/Ambience/GameOff_SpaceAmbience1.ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>55.384625850340136</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d3e9b79a-8815-4013-ac01-a02610c5c2c4}</destination>
+		</relationship>
+	</object>
+</objects>
