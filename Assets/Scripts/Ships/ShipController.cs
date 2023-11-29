@@ -17,9 +17,12 @@ public class ShipController : StateRunner<ShipController>
     internal bool IsReturnTrip;
     internal bool IsFlipped;
 
+
+    internal List<ICommand> Commands;
+    internal TradeContract CurrentContract;
+
     private void Start()
     {
-        ChangePositionTest();
         _animator = GetComponent<Animator>();
         SetState(typeof(DefaultShipState));
         MainEventBus.NextDay += OnNewDay;
@@ -54,9 +57,9 @@ public class ShipController : StateRunner<ShipController>
         
     }
 
-    private void ChangePositionTest()
+    public void NewContract(TradeContract contract)
     {
+        CurrentContract = contract;
         HasGoal = true;
-        GoalDestination = new Vector3(20, 10, 0);
     }
 }
