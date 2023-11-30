@@ -30,13 +30,10 @@ public class DefaultWorldState : State<WorldController>
     public override void NewDay()
     {
         //_activeState.NewDay();
-        Debug.Log("NewDay");
 
         Consume();
         Produce();
         CalculatePrice();
-
-        Debug.Log(Parent + " " + Parent.planetData.inventory[Goods.water]);
     }
 
     void Consume()
@@ -68,17 +65,7 @@ public class DefaultWorldState : State<WorldController>
         }
     }
 
-    void Buy(/*ship,*/Goods item, int amountBought)
-    {
-        Parent.planetData.inventory[item] += amountBought;
-        //player.inventory.Add(GiveMoney());
-    }
-
-    void Sell(/*ship,*/Goods item, int amountSold)
-    {
-        Parent.planetData.inventory[item] -= amountSold;
-        //player.inventory.Add(-GetMoney());
-    }
+    
 
     void CalculatePrice()
     {
@@ -106,22 +93,6 @@ public class DefaultWorldState : State<WorldController>
                 Parent.planetData.prices[productAmount] = (int)fluidPrice;
             }
         }
-    }
-
-    int GetMoney(int amount, int price)
-    {
-        float fluidMoney = amount * price;
-        fluidMoney *= 1 + Parent.planetData.taxRate;
-        int money = (int)fluidMoney;
-        return money;
-    }
-
-    int GiveMoney(int amount, int price)
-    {
-        float fluidMoney = amount * price;
-        fluidMoney *= 1 - Parent.planetData.taxRate;
-        int money = (int)fluidMoney;
-        return money;
     }
 
 }

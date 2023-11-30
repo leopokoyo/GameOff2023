@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 public class BuyCommand : ICommand
@@ -22,6 +23,8 @@ public class BuyCommand : ICommand
         if (PlayerInformation.instance.gold >= World.planetData.prices[GoodType] * Quantity)
         {
             PlayerInformation.instance.inventory[GoodType] += Quantity;
+            World.Buy(GoodType, Quantity);
+            PlayerInformation.instance.gold -= World.GiveMoney(Quantity, GoodType);
         }
         else
         {

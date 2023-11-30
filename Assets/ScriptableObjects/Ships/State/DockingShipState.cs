@@ -29,6 +29,14 @@ public class DockingShipState : State<ShipController>
 
     public override void NewDay()
     {
+        foreach(ICommand command in Parent.CurrentContract.Commands)
+        {
+            command.Execute();
+            Debug.Log("Executed or whatever");
+        }
+
+
+
         // It sets it as a return trip
         Parent.IsReturnTrip = true;
         // If the ship's cur

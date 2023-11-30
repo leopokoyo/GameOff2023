@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset.meta
 guid: 45028cabe7f631b5aaa4b44d16212c48
+=======
+<<<<<<< Updated upstream
+guid: 3fa83c54ce724e17b9e82463513a85b6
+=======
+guid: 1ac4f0fec4a0c3ff698783eea6d1f044
+>>>>>>> Stashed changes
+>>>>>>> BartsThirdBranch:Assets/ScriptableObjects/Planets/PlanetData/Earth.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

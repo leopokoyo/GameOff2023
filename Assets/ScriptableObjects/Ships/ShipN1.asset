@@ -38,7 +38,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   nextDestination: {x: 0, y: 0, z: 0}
   goalDestination: {x: 0, y: 0, z: 0}
-  homeDestination: {x: -19.47, y: -2.39, z: 0}
+  homeDestination: {x: -20.2, y: -5.1, z: 3}
   speed: 5
   rotationSpeed: 1
   health: 1

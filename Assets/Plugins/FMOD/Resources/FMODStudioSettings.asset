@@ -441,7 +441,13 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
+<<<<<<< HEAD
   Banks: []
+=======
+  Banks:
+  - Music
+  - SFX
+>>>>>>> BartsThirdBranch
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
