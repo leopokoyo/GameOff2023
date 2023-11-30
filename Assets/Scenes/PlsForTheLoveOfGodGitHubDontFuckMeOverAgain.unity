@@ -795,7 +795,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standardTextBox: {fileID: 3820588136623775505, guid: e687d2af4e944774ebaad5bfe4f48d19, type: 3}
-  canvas: {fileID: 1147399442}
 --- !u!1 &1423440705
 GameObject:
   m_ObjectHideFlags: 0

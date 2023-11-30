@@ -15,6 +15,7 @@ public class ShipMenu : MonoBehaviour
     public void OpenMenu()
     {
         animator.SetBool("isActive", true);
+        
     }
 
     public void CloseMenu()
