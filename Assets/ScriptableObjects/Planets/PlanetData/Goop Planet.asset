@@ -17,7 +17,8 @@ MonoBehaviour:
   luxuryProductConsumtion: 10
   luxuryStandardPrice: 5
   basicStandardPrice: 3
-  productionRate: 02000000
+  productionRate:
+  - 0.5
   taxRate: 0.1
   mainProduction: 01000000
-  planetLocation: {x: 0, y: 0, z: 0}
+  planetLocation: {x: -399.3, y: -10.4, z: 3.8}

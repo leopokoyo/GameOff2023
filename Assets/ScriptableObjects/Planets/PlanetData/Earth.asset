@@ -13,16 +13,13 @@ MonoBehaviour:
   m_Name: Earth
   m_EditorClassIdentifier: 
   population: 500
-<<<<<<< Updated upstream
-  basicProductConsumption: 20
-  luxuryProductConsumtion: 100
-=======
   basicProductConsumption: 100
   luxuryProductConsumtion: 20
->>>>>>> Stashed changes
-  luxuryStandardPrice: 10
+  luxuryStandardPrice: 5
   basicStandardPrice: 3
-  productionRate: 0300000003000000
+  productionRate:
+  - 0.5
+  - 0.5
   taxRate: 0.1
   mainProduction: 0300000004000000
-  planetLocation: {x: 0, y: 0, z: 0}
+  planetLocation: {x: -471.17, y: 14.33, z: 3}
