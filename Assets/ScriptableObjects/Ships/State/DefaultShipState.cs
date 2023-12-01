@@ -41,9 +41,8 @@ public class DefaultShipState : State<ShipController>
             {
                 Parent.Flip();
             }
+            Parent.SetState(typeof(MoveShipSate));
         }
-        Parent.SetState(typeof(MoveShipSate));
     }
-    
 }
 

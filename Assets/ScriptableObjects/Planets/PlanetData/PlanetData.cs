@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Planet/PlanetData")]
@@ -27,7 +28,7 @@ public class PlanetData : ScriptableObject
         {Goods.cheese, 0},
         {Goods.water, 0}
     };
-    public Dictionary<Goods, int> prices = new Dictionary<Goods, int>()
+    public Dictionary<Goods, float> prices = new Dictionary<Goods, float>()
     {
         {Goods.steelWool, 3},
         {Goods.goop, 3},

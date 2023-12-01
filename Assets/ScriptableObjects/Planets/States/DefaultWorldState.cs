@@ -25,24 +25,28 @@ public class DefaultWorldState : State<WorldController>
 
     }
 
-    public override void Update(){}
+    public override void Update() { }
 
     public override void NewDay()
     {
         //_activeState.NewDay();
-        Debug.Log("NewDay");
 
         Consume();
         Produce();
         CalculatePrice();
 
-        Debug.Log(Parent + " " + Parent.planetData.inventory[Goods.water]);
+        List<Goods> keys = new List<Goods>(Parent.planetData.inventory.Keys);
+        foreach (Goods productAmount in keys)
+        {
+            Debug.Log(Parent.planetData.prices[productAmount] + " " + productAmount + " " + Parent);
+        }
     }
 
     void Consume()
     {
         List<Goods> keys = new List<Goods>(Parent.planetData.inventory.Keys);
-        foreach (Goods productAmount in keys){
+        foreach (Goods productAmount in keys)
+        {
             if (productAmount == Goods.water)
             {
                 int luxConsumption = Parent.planetData.population / Parent.planetData.luxuryProductConsumtion;
@@ -61,24 +65,20 @@ public class DefaultWorldState : State<WorldController>
     {
         for (int i = 0; i < Parent.planetData.mainProduction.Length; i++)
         {
+
             //calculate production based of population
+<<<<<<< Updated upstream
             int production = Parent.planetData.population * Parent.planetData.productionRate[i];
+=======
+            float production = Parent.planetData.population * Parent.planetData.productionRate[i];
+
+>>>>>>> Stashed changes
             //change inventory based of production
-            Parent.planetData.inventory[Parent.planetData.mainProduction[i]] += production;
+            Parent.planetData.inventory[Parent.planetData.mainProduction[i]] += (int)production;
         }
     }
 
-    void Buy(/*ship,*/Goods item, int amountBought)
-    {
-        Parent.planetData.inventory[item] += amountBought;
-        //player.inventory.Add(GiveMoney());
-    }
 
-    void Sell(/*ship,*/Goods item, int amountSold)
-    {
-        Parent.planetData.inventory[item] -= amountSold;
-        //player.inventory.Add(-GetMoney());
-    }
 
     void CalculatePrice()
     {
@@ -93,35 +93,25 @@ public class DefaultWorldState : State<WorldController>
             if (productAmount == Goods.water)
             {
                 relativeStockpile = Parent.planetData.inventory[productAmount] / normalLuxuryStockpile;
+                if (relativeStockpile >= 1.9){
+                    relativeStockpile = 1.9f;
+                }
                 float priceModifier = 1 + (1 - relativeStockpile);
                 fluidPrice = Parent.planetData.luxuryStandardPrice * priceModifier;
-                Parent.planetData.prices[productAmount] = (int)fluidPrice;
+                Parent.planetData.prices[productAmount] = fluidPrice;
             }
 
             else
             {
                 relativeStockpile = Parent.planetData.inventory[productAmount] / normalBasicStockpile;
+                if (relativeStockpile >= 1.9){
+                    relativeStockpile = 1.9f;
+                }
                 float priceModifier = 1 + (1 - relativeStockpile);
                 fluidPrice = Parent.planetData.basicStandardPrice * priceModifier;
-                Parent.planetData.prices[productAmount] = (int)fluidPrice;
+                Parent.planetData.prices[productAmount] = fluidPrice;
             }
         }
-    }
-
-    int GetMoney(int amount, int price)
-    {
-        float fluidMoney = amount * price;
-        fluidMoney *= 1 + Parent.planetData.taxRate;
-        int money = (int)fluidMoney;
-        return money;
-    }
-
-    int GiveMoney(int amount, int price)
-    {
-        float fluidMoney = amount * price;
-        fluidMoney *= 1 - Parent.planetData.taxRate;
-        int money = (int)fluidMoney;
-        return money;
     }
 
 }

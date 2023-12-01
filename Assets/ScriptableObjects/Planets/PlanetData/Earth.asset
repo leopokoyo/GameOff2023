@@ -12,23 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c12676e2cc35639a55efa88c9fb9a5, type: 3}
   m_Name: Earth
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-  population: 0
-  basicProductConsumption: 0
-  luxuryProductConsumtion: 0
-  luxuryStandardPrice: 0
-  basicStandardPrice: 0
-  productionRate: 
-  taxRate: 0
-  mainProduction: 
-=======
   population: 500
-  basicProductConsumption: 20
-  luxuryProductConsumtion: 100
-  luxuryStandardPrice: 10
+  basicProductConsumption: 100
+  luxuryProductConsumtion: 20
+  luxuryStandardPrice: 5
   basicStandardPrice: 3
-  productionRate: 0300000003000000
+  productionRate:
+  - 0.5
+  - 0.5
   taxRate: 0.1
   mainProduction: 0300000004000000
->>>>>>> Stashed changes
-  planetLocation: {x: 0, y: 0, z: 0}
+  planetLocation: {x: -471.17, y: 14.33, z: 3}
