@@ -90,7 +90,7 @@ public class ShipOptionText : MonoBehaviour
 
     public void GiveInfo()
     {
-        
+       
         if (isBuying){
             commands.Add(new BuyCommand(ship, currentWorld, typeOfGood, amountOfGoods));
         }
@@ -98,12 +98,11 @@ public class ShipOptionText : MonoBehaviour
         if (isBuying == false){
             commands.Add(new SellCommand(ship, currentWorld, typeOfGood, amountOfGoods));
         }
-
-        TradeContract newContract = new TradeContract(planetLocation, commands);
         Debug.Log(commands.Count);
 
+        TradeContract newContract = new TradeContract(planetLocation, commands);
         ship.NewContract(newContract);
 
-        commands.Remove(commands[0]);
+       
     }
 }

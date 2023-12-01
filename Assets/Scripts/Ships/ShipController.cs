@@ -61,5 +61,7 @@ public class ShipController : StateRunner<ShipController>
     {
         CurrentContract = contract;
         HasGoal = true;
+        
+        Debug.Log("CONTRACT RECEIVED");
     }
 }

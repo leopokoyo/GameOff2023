@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -21,6 +22,13 @@ public class AudioManager : MonoBehaviour
             Instance = this;
         }
     }
-    
-    
+
+    private void Start()
+    {
+        Music = RuntimeManager.CreateInstance(FmodEvents.Instance.Music);
+        Ambience = RuntimeManager.CreateInstance(FmodEvents.Instance.Ambience);
+
+        Music.start();
+        Ambience.start();
+    }
 }

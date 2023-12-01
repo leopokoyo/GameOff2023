@@ -51,6 +51,11 @@ public class DefaultWorldState : State<WorldController>
                 int consumption = Parent.planetData.population / Parent.planetData.basicProductConsumption;
                 Parent.planetData.inventory[productAmount] -= consumption;
             }
+
+            if (Parent.planetData.inventory[productAmount] <= 0)
+            {
+                Parent.planetData.inventory[productAmount] = 0;
+            }
         }
     }
 
@@ -59,7 +64,7 @@ public class DefaultWorldState : State<WorldController>
         for (int i = 0; i < Parent.planetData.mainProduction.Length; i++)
         {
             //calculate production based of population
-            int production = Parent.planetData.population * Parent.planetData.productionRate[i];
+            int production = (int)( Parent.planetData.population * Parent.planetData.productionRate[i]);
             //change inventory based of production
             Parent.planetData.inventory[Parent.planetData.mainProduction[i]] += production;
         }

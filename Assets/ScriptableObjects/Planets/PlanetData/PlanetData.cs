@@ -11,7 +11,7 @@ public class PlanetData : ScriptableObject
     public int basicProductConsumption;
     public int luxuryProductConsumtion;
     public float luxuryStandardPrice, basicStandardPrice;
-    public int[] productionRate;
+    public float[] productionRate;
     public float taxRate;
     public Goods[] mainProduction;
     
