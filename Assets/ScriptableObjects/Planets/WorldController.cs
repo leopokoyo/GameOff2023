@@ -8,19 +8,23 @@ public class WorldController : StateRunner<WorldController>
     
     public PlanetData planetData;
 
+    private TextManager canvas;
+
     void Start(){
 
         SetState(typeof(DefaultWorldState));
+
+        canvas = FindObjectOfType<TextManager>();
 
         //infoScreen.SetActive(false);
     }
 
     void OnMouseOver(){
-        //infoScreen.SetActive(true);
+        canvas.ChooseDisplay(this);
     }
 
     void OnMouseExit(){
-        //infoScreen.SetActive(false);
+        canvas.DeactivateDisplay();
     }
 
     private void OnEnable()

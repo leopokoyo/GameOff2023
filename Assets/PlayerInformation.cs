@@ -5,18 +5,28 @@ using UnityEngine;
 
 public class PlayerInformation : MonoBehaviour
 {
-    public static PlayerInformation Instance;
+    public static PlayerInformation instance { get; private set; }
 
+    public Dictionary<Goods, int> inventory = new Dictionary<Goods, int>()
+    {
+        {Goods.steelWool, 0},
+        {Goods.goop, 0},
+        {Goods.dogToys, 0},
+        {Goods.cheese, 0},
+        {Goods.water, 0}
+    };
+    public int gold;
+    
     private void Awake()
     {
-        if (Instance != this)
+        
+        if (instance != null && instance != this)
         {
-
-            Debug.Log("");
+            Destroy(this);
         }
         else
         {
-            Instance = this;
+            instance = this;
         }
     }
 }

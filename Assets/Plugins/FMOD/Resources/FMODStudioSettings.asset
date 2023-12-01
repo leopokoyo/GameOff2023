@@ -415,10 +415,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   switchSettingsMigration: 1
-  HasSourceProject: 1
+  HasSourceProject: 0
   HasPlatforms: 1
   sourceProjectPath: Assets/Fmod/GameOff.fspro
-  sourceBankPath: Assets/Fmod/Build
+  sourceBankPath: Assets/Fmod
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
