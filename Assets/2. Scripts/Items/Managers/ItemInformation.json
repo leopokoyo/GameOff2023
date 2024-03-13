@@ -1,22 +1,24 @@
 {
-  "Wool": {
-    "name": "Wool",
-    "description": "Comes from sheep",
-    "max_stack": 64
-  },
-  "Rabbits": {
-    "name": "Wool",
-    "description": "Comes from sheep",
-    "max_stack": 64
-  },
-  "Cheese": {
-    "name": "Wool",
-    "description": "Comes from sheep",
-    "max_stack": 64
-  },
-  "Goop": {
-    "name": "Wool",
-    "description": "Comes from sheep",
-    "max_stack": 64
+  "items" : {
+    "Wool": {
+      "name": "Wool",
+      "description": "Comes from sheep",
+      "max_stack": 64
+    },
+    "Rabbits": {
+      "name": "Wool",
+      "description": "Comes from sheep",
+      "max_stack": 64
+    },
+    "Cheese": {
+      "name": "Wool",
+      "description": "Comes from sheep",
+      "max_stack": 64
+    },
+    "Goop": {
+      "name": "Wool",
+      "description": "Comes from sheep",
+      "max_stack": 64
+    }
   }
 }
